@@ -1,13 +1,10 @@
 from bert_serving.client import BertClient
 import numpy as np
 import math
-# bc = BertClient()
-# test = bc.encode(['我想要离婚怎么办', '怎么样离婚呢'])
-# #test = bc.encode(['123123'])
-# print(test)
-
+from scipy.spatial.distance import cosine
 
 class Nlper:
+
     def __init__(self, bert_client):
         self.bert_client = bert_client
 
@@ -20,20 +17,15 @@ class Nlper:
             similarity = round(0.5 + 0.5 * (dot_product / (norm_1 * norm_2)), 2)
             return similarity
 
-def age(*arg):
-    num=lambda a,b: a*b
-    print(num(2,2))
 if __name__ == '__main__':
-    # bc = BertClient()
+    from bert_serving.client import BertClient
+    bc = BertClient()
+    arr = ["你吃饭吗","你上厕所吗"]
+    for i in range(len(arr)):
+        print(i,arr[i])
+    vecs = bc.encode(arr)
+    a=1-cosine(vecs[0],vecs[1])
+    print(a)
     # nlper = Nlper(bert_client=bc)
-    # similarity = nlper.get_text_similarity('你好', '他要死了')
+    # similarity = nlper.get_text_similarity('你好', '您不好')
     # print(similarity)
-    #
-    # prefix_q = '##### **Q:** '
-    # with open('README.md',encoding='gb18030',errors='ignore') as fp:
-    #     questions = [v.replace(prefix_q, '').strip() for v in fp if v.strip() and v.startswith(prefix_q)]
-    #     print('%d questions loaded, avg. len of %d' % (len(questions), np.mean([len(d.split()) for d in questions])))
-    #     print(questions)
-
-    a=[1,2,3,4,5]
-    print(a[-1:])

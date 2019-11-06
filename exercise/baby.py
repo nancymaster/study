@@ -100,7 +100,7 @@ if __name__ == "__main__":
     os.mkdir(dldir)
 
     # 构造参数
-    hed = {'api_uid': '13073127','api_utoken': 'A22D4DD4A088AB2A860B6165B2D0F16D20190911101435','app_name': 'BabyFamily',\
+    hed = {'api_uid': '13073127','api_utoken': '6AD9F26535CD6720962900BD426C1B3B20191018171544','app_name': 'BabyFamily',\
     'debug': 'false','os_name': 'iOS','os_version': '12.400000'}
     ret = request("GET",url_info,hed,"{}")
     assert ret['success'] == True,"error：列表请求失败"
